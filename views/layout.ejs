@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    <%= title || 'My Website' %>
+  </title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <!-- <header>
+    <h1>My Website</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/users">Users</a> |
+      <a href="/list">List</a>
+    </nav>
+  </header> -->
+
+  <main>
+    <!-- 主體內容 -->
+    <%- body %>
+  </main>
+
+  <footer>
+    <hr>
+    <p>&copy; 2025 - MyWevApp1</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<p><%= content %></p>
+
+<% if (user) { %>
+  <p>你好，<%= user.username %>！<a href="/auth/logout">登出</a></p>
+  <form action="/posts" method="POST">
+    <textarea name="content" required></textarea>
+    <button type="submit">發表留言</button>
+  </form>
+<% } else { %>
+  <p><a href="/auth/login">登入</a> 或 <a href="/auth/register">註冊</a>後才能留言</p>
+<% } %>
+
+<hr>
+<h2>留言列表</h2>
+<% posts.forEach(post => { %>
+  <div>
+    <strong><%= user.username %></strong>：<%= post.Content %><br>
+    <small><%= post.CreateDate.toLocaleString('en-GB', { timeZone: 'UTC' }) %></small>
+    <% if (user && (user.id === post.UserId || user.role === 'admin')) { %>
+      <form action="/posts/<%= post.Id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit" class="DelBtn">刪除</button>
+      </form>
+      <a href="/posts/<%= post.Id %>/edit">編輯</a>
+    <% } %>
+  </div>
+<% }) %>
+
+<script>
+  $(document).ready(() => {
+    $('.DelBtn').on('click', function (e) {
+      if (!confirm('確定要刪除這則留言嗎？')) {
+        e.preventDefault(); // 取消送出表單
+      }
+    });
+  });
+</script>

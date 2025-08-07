@@ -1,0 +1,6 @@
+<h1>編輯留言</h1>
+<form action="/posts/<%= post.Id %>?_method=PUT" method="POST">
+  <textarea name="content" required><%= post.Content %></textarea>
+  <button type="submit">儲存</button>
+</form>
+<a href="/">返回首頁</a>
